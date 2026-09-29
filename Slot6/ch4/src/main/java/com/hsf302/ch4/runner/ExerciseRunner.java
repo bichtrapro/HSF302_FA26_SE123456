@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+
 @Component
 @Order(2)
 @RequiredArgsConstructor
@@ -16,6 +18,34 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
     private final StudentService studentService;
     @Override
     public void run(String... args) throws Exception {
+        //In tổng số departments
+        todo6();
+    }
+    // ===== helpers =====
+    private void title(String t) {
+        System.out.println("\n===== " + t + " =====");
+    }
 
+    private void printList(String label, Collection<?> list) {
+        System.out.println("-- " + label + ":");
+        list.forEach(o -> System.out.println("   " + o));
+        System.out.println("   -> " + list.size() + " record(s)");
+    }
+    private void todo6(){
+        title("count departments");
+        System.out.println("Total departments: " + departmentService.countDepartments());
+        System.out.println("Total students: " + studentService.countStudents());
+
+        //Tìm kiếm student id =1 và id = 99
+        studentService.findStudentById(1L).ifPresentOrElse(
+            student -> System.out.println("Student found: " + student),
+            () -> System.out.println("Student not found")
+        );
+        studentService.findStudentById(99L).ifPresentOrElse(
+            student -> System.out.println("Student found: " + student),
+            () -> System.out.println("Student not found")
+        );
+        //Tiìm kiếm department id=4
+        System.out.println("Department id=4 exists: " + departmentService.findById(4L));
     }
 }

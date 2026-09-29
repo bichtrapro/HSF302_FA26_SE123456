@@ -11,4 +11,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
     }
+
+    @Override
+    public long countDepartments() {
+        return departmentRepository.count();
+    }
+
+    @Override
+    public boolean findById(Long id) {
+        return departmentRepository.existsById(id);
+    }
 }

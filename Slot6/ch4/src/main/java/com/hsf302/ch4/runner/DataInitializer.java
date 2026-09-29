@@ -36,8 +36,8 @@ public class DataInitializer implements org.springframework.boot.CommandLineRunn
         departmentRepository.saveAll(List.of(se, ai, ia, gd));
 
         studentRepository.saveAll(List.of(
-                st("SE001", "Nguyen Van An",  "an.nv@fpt.edu.vn",   MALE,   "2005-03-15", 3.2, true,  se),
-                st("SE002", "Tran Thi Binh",  "binh.tt@fpt.edu.vn", FEMALE, "2004-07-22", 3.8, true,  se),
+                st("SE001", "Nguyễn Van An",  "an.nv@fpt.edu.vn",   MALE,   "2005-03-15", 3.2, true,  se),
+                st("SE002", "Trần Thi Binh",  "binh.tt@fpt.edu.vn", FEMALE, "2004-07-22", 3.8, true,  se),
                 st("SE003", "Le Van Cuong",   "cuong.lv@fpt.edu.vn",MALE,   "2003-11-05", 2.5, false, se),
                 st("AI001", "Pham Thi Dung",  "dung.pt@fpt.edu.vn", FEMALE, "2006-01-10", 3.5, true,  ai),
                 st("AI002", "Hoang Van Em",   "em.hv@gmail.com",    MALE,   "2002-09-30", 2.8, true,  ai),
