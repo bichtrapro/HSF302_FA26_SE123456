@@ -29,7 +29,8 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         //todo8();
         //todo9();
         //todo10();
-        todo11();
+        //todo11();
+        todo12();
     }
     // ===== helpers =====
     private void title(String t) {
@@ -101,5 +102,9 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         System.out.println("count students of AI -> " + studentService.demSVTheoDepartment("AI"));
         printList("Top 3 GPA", studentService.timTop3SVGpa());
         printList("Departments without students", departmentService.timDepartmentWithoutSV());
+    }
+    private void todo12() {
+        title("TODO 12: JPQL + named parameter");
+        printList("SE, GPA >= 3.0", studentService.timGoodStudents("SE", 3.0));
     }
 }

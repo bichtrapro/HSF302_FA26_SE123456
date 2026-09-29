@@ -39,4 +39,8 @@ public interface StudentService {
     List<Student> timDepartment(String deptCode);    // TODO 11a
     long demSVTheoDepartment(String deptCode);            // TODO 11b (dùng lại ở TODO 22)
     List<Student> timTop3SVGpa();
+
+
+    //TODO 12
+    List<Student> timGoodStudents(String deptCode, double minGpa);   // TODO 12
 }
