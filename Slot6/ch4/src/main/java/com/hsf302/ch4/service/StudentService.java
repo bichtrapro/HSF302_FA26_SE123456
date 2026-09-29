@@ -23,5 +23,8 @@ public interface StudentService {
     boolean kiemTraEmailTonTai(String email);
     Long demStatusActive();
 
-
+    //Todo 9
+    List<Student> timSVTheoTen(String keyword);
+    List<Student> timSVTheoEmailDomain(String domain);
+    List<Student> timSVKhongCoEmail();
 }

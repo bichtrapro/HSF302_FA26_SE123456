@@ -24,7 +24,8 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         //In tổng số departments
        // todo6();
         // todo7();
-        todo8();
+        //todo8();
+        todo9();
     }
     // ===== helpers =====
     private void title(String t) {
@@ -76,5 +77,12 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         System.out.println("isEmailExisted(binh.tt@fpt.edu.vn) -> "
                 + studentService.kiemTraEmailTonTai("binh.tt@fpt.edu.vn"));
         System.out.println("countActive -> " + studentService.demStatusActive());
+    }
+
+    private void todo9(){
+        title("TODO 9: Containing / EndingWith / IsNull");
+        printList("fullName contains 'nguyen'", studentService.timSVTheoTen("nguyen"));
+        printList("email domain 'gmail.com'", studentService.timSVTheoEmailDomain("gmail.com"));
+        printList("email is null", studentService.timSVKhongCoEmail());
     }
 }

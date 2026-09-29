@@ -59,5 +59,20 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.countByActiveTrue();
     }
 
+    @Override
+    public List<Student> timSVTheoTen(String keyword) {
+        return studentRepository.findStudentByFullNameContainingIgnoreCase(keyword);
+    }
+
+    @Override
+    public List<Student> timSVTheoEmailDomain(String domain) {
+        return studentRepository.findStudentByEmailEndingWith(domain);
+    }
+
+    @Override
+    public List<Student> timSVKhongCoEmail() {
+        return studentRepository.findStudentByEmailIsNull();
+    }
+
 
 }
