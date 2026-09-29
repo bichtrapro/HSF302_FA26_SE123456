@@ -14,4 +14,7 @@ public interface DepartmentService {
 
     //TODO 14
     List<DepartmentStatDTO> getStatistics();   // TODO 14 (dùng lại ở TODO 23)
+
+    //TODO 16
+    Department getWithStudents(String code);   // TODO 16b
 }

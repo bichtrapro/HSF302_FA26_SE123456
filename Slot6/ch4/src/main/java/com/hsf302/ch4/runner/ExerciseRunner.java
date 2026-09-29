@@ -1,5 +1,6 @@
 package com.hsf302.ch4.runner;
 
+import com.hsf302.ch4.pojo.Department;
 import com.hsf302.ch4.pojo.Gender;
 import com.hsf302.ch4.pojo.Student;
 import com.hsf302.ch4.service.DepartmentService;
@@ -32,7 +33,12 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         //todo11();
         //todo12();
        // todo13();
-        todo14();
+        // todo14();
+        //todo15();
+        //todo16();
+        Department aiFull = departmentService.getWithStudents("AI");
+        System.out.println("(b) " + aiFull);
+        aiFull.getStudents().forEach(s -> System.out.println("     " + s));
     }
     // ===== helpers =====
     private void title(String t) {
