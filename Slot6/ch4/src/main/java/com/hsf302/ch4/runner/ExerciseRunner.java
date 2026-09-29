@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.List;
 
 @Component
 @Order(2)
@@ -22,7 +23,8 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
     public void run(String... args) throws Exception {
         //In tổng số departments
        // todo6();
-        todo7();
+        // todo7();
+        todo8();
     }
     // ===== helpers =====
     private void title(String t) {
@@ -55,7 +57,7 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
     private void todo7(){
 
         //GPA giảm dần
-        printList("All students order by GPA Desc", studentService.SapXepGPADesc());
+        printList("All students order by GPA Desc", studentService.sapXepGPADesc());
 
         //Trang thứ 2 - index = 1
         Page<Student> page = studentService.phanTrang(1,3,"fullName");
@@ -63,5 +65,16 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
                 + ", totalPages=" + page.getTotalPages()
                 + ", hasNext=" + page.hasNext()
                 + ", hasPrevious=" + page.hasPrevious());
+    }
+    private void todo8(){
+        title("TODO 8: findBy/ existsBy / CountBy");
+        title("TODO 8: findBy / existsBy / countBy");
+        for (String code : List.of("AI002", "XX999")) {
+            System.out.println("findByStudentCode(" + code + ") -> " +
+                    studentService.timTheoMaSV(code).map(Object::toString).orElse("Not found"));
+        }
+        System.out.println("isEmailExisted(binh.tt@fpt.edu.vn) -> "
+                + studentService.kiemTraEmailTonTai("binh.tt@fpt.edu.vn"));
+        System.out.println("countActive -> " + studentService.demStatusActive());
     }
 }

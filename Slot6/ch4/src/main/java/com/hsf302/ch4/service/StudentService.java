@@ -14,7 +14,14 @@ public interface StudentService {
     Optional<Student> findStudentById(Long id);
 
     //Todo 7
-    List<Student> SapXepGPADesc();
+    List<Student> sapXepGPADesc();
     Page<Student> phanTrang(int pageIndex, int size, String sortField);
+
+    //Todo 8
+    //tim theo student code
+    Optional<Student> timTheoMaSV(String studentCode);
+    boolean kiemTraEmailTonTai(String email);
+    Long demStatusActive();
+
 
 }

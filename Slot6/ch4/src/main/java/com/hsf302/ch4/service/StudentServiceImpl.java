@@ -14,13 +14,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
 
-    public StudentServiceImpl(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
+
 
     @Override
     public long countStudents() {
@@ -33,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> SapXepGPADesc() {
+    public List<Student> sapXepGPADesc() {
         return studentRepository.findAll(Sort.by(Sort.Direction.DESC, "gpa"));
     }
 
@@ -43,6 +42,21 @@ public class StudentServiceImpl implements StudentService {
             throw new IllegalArgumentException("PageIndex phai >=0 va size phai >0");
         Pageable pageable = PageRequest.of(pageIndex,size, Sort.by(sortField).ascending());
         return studentRepository.findAll(pageable);
+    }
+
+    @Override
+    public Optional<Student> timTheoMaSV(String studentCode) {
+        return studentRepository.findByStudentCode(studentCode);
+    }
+
+    @Override
+    public boolean kiemTraEmailTonTai(String email) {
+        return studentRepository.existsByEmail(email);
+    }
+
+    @Override
+    public Long demStatusActive() {
+        return studentRepository.countByActiveTrue();
     }
 
 
