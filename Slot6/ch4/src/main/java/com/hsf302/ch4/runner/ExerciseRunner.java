@@ -28,7 +28,8 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         // todo7();
         //todo8();
         //todo9();
-        todo10();
+        //todo10();
+        todo11();
     }
     // ===== helpers =====
     private void title(String t) {
@@ -93,5 +94,12 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         printList("GPA in [3.0, 3.6] desc", studentService.timGPABetween(3.0, 3.6));
         printList("MALE & active", studentService.timGenderActive(Gender.MALE));
         printList("dob after 2005-01-01", studentService.timDobAfter(LocalDate.of(2005, 1, 1)));
+    }
+    private void todo11() {
+        title("TODO 11: Nested property / Top / IsEmpty");
+        printList("Students of SE (order by name)", studentService.timDepartment("SE"));
+        System.out.println("count students of AI -> " + studentService.demSVTheoDepartment("AI"));
+        printList("Top 3 GPA", studentService.timTop3SVGpa());
+        printList("Departments without students", departmentService.timDepartmentWithoutSV());
     }
 }

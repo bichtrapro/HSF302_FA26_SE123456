@@ -22,6 +22,7 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
 
 
+    //TODO 6
 
     @Override
     public long countStudents() {
@@ -32,6 +33,8 @@ public class StudentServiceImpl implements StudentService {
     public Optional<Student> findStudentById(Long id) {
         return studentRepository.findById(id);
     }
+
+    //TODO 7
 
     @Override
     public List<Student> sapXepGPADesc() {
@@ -45,6 +48,8 @@ public class StudentServiceImpl implements StudentService {
         Pageable pageable = PageRequest.of(pageIndex,size, Sort.by(sortField).ascending());
         return studentRepository.findAll(pageable);
     }
+
+    //TODO 8
 
     @Override
     public Optional<Student> timTheoMaSV(String studentCode) {
@@ -60,6 +65,7 @@ public class StudentServiceImpl implements StudentService {
     public Long demStatusActive() {
         return studentRepository.countByActiveTrue();
     }
+    //TODO 9
 
     @Override
     public List<Student> timSVTheoTen(String keyword) {
@@ -75,7 +81,7 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> timSVKhongCoEmail() {
         return studentRepository.findStudentByEmailIsNull();
     }
-
+    //TODO 10
     @Override
     public List<Student> timGPABetween(double min, double max) {
         return studentRepository.findStudentByGpaBetweenOrderByGpaDesc(min,max);
@@ -89,6 +95,23 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> timDobAfter(LocalDate date) {
         return studentRepository.findByDobAfter(date);
+    }
+
+    //TODO 11
+
+    @Override
+    public List<Student> timDepartment(String deptCode) {
+        return studentRepository.findByDepartment_CodeOrderByFullNameAsc(deptCode);
+    }
+
+    @Override
+    public long demSVTheoDepartment(String deptCode) {
+        return studentRepository.countByDepartment_Code(deptCode);
+    }
+
+    @Override
+    public List<Student> timTop3SVGpa() {
+        return studentRepository.findTop3ByOrderByGpaDesc();
     }
 
 

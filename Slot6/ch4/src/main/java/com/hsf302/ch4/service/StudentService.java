@@ -34,4 +34,9 @@ public interface StudentService {
     List<Student> timGPABetween(double min, double max);
     List<Student> timGenderActive(Gender gender);
     List<Student> timDobAfter(LocalDate date);
+
+    //TODO 11
+    List<Student> timDepartment(String deptCode);    // TODO 11a
+    long demSVTheoDepartment(String deptCode);            // TODO 11b (dùng lại ở TODO 22)
+    List<Student> timTop3SVGpa();
 }
