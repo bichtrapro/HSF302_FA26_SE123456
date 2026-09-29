@@ -30,7 +30,9 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         //todo9();
         //todo10();
         //todo11();
-        todo12();
+        //todo12();
+       // todo13();
+        todo14();
     }
     // ===== helpers =====
     private void title(String t) {
@@ -111,5 +113,9 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         title("TODO 13: JPQL LIKE");
         printList("keyword 'hoa'", studentService.timSVTheoKeyword("hoa"));
         printList("keyword 'gmail'", studentService.timSVTheoKeyword("gmail"));
+    }
+    private void todo14() {
+        title("TODO 14: Statistics by department (DTO)");
+        printList("code | name | total | avgGpa", departmentService.getStatistics());
     }
 }

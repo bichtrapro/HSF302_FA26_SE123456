@@ -1,5 +1,6 @@
 package com.hsf302.ch4.service;
 
+import com.hsf302.ch4.dto.DepartmentStatDTO;
 import com.hsf302.ch4.pojo.Department;
 import com.hsf302.ch4.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public List<Department> timDepartmentWithoutSV() {
         return departmentRepository.findByStudentsIsEmpty();
+    }
+
+    //TODO 14
+    @Override
+    public List<DepartmentStatDTO> getStatistics() {
+        return departmentRepository.getDepartmentStats();
     }
 }
