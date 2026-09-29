@@ -2,10 +2,15 @@ package com.hsf302.ch4.service;
 
 import com.hsf302.ch4.pojo.Student;
 import com.hsf302.ch4.repository.StudentRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +30,19 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Optional<Student> findStudentById(Long id) {
         return studentRepository.findById(id);
+    }
+
+    @Override
+    public List<Student> SapXepGPADesc() {
+        return studentRepository.findAll(Sort.by(Sort.Direction.DESC, "gpa"));
+    }
+
+    @Override
+    public Page<Student> phanTrang(int pageIndex, int size, String sortField) {
+        if (pageIndex <0 || size <=0)
+            throw new IllegalArgumentException("PageIndex phai >=0 va size phai >0");
+        Pageable pageable = PageRequest.of(pageIndex,size, Sort.by(sortField).ascending());
+        return studentRepository.findAll(pageable);
     }
 
 

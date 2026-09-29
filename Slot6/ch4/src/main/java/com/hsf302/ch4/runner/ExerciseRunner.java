@@ -1,9 +1,11 @@
 package com.hsf302.ch4.runner;
 
+import com.hsf302.ch4.pojo.Student;
 import com.hsf302.ch4.service.DepartmentService;
 import com.hsf302.ch4.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -19,7 +21,8 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
     @Override
     public void run(String... args) throws Exception {
         //In tổng số departments
-        todo6();
+       // todo6();
+        todo7();
     }
     // ===== helpers =====
     private void title(String t) {
@@ -47,5 +50,18 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         );
         //Tiìm kiếm department id=4
         System.out.println("Department id=4 exists: " + departmentService.findById(4L));
+    }
+
+    private void todo7(){
+
+        //GPA giảm dần
+        printList("All students order by GPA Desc", studentService.SapXepGPADesc());
+
+        //Trang thứ 2 - index = 1
+        Page<Student> page = studentService.phanTrang(1,3,"fullName");
+        System.out.println("totalElements=" + page.getTotalElements()
+                + ", totalPages=" + page.getTotalPages()
+                + ", hasNext=" + page.hasNext()
+                + ", hasPrevious=" + page.hasPrevious());
     }
 }
