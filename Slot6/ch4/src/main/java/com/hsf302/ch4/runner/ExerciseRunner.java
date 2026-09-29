@@ -107,4 +107,9 @@ public class ExerciseRunner implements org.springframework.boot.CommandLineRunne
         title("TODO 12: JPQL + named parameter");
         printList("SE, GPA >= 3.0", studentService.timGoodStudents("SE", 3.0));
     }
+    private void todo13() {
+        title("TODO 13: JPQL LIKE");
+        printList("keyword 'hoa'", studentService.timSVTheoKeyword("hoa"));
+        printList("keyword 'gmail'", studentService.timSVTheoKeyword("gmail"));
+    }
 }

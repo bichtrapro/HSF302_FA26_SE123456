@@ -43,4 +43,7 @@ public interface StudentService {
 
     //TODO 12
     List<Student> timGoodStudents(String deptCode, double minGpa);   // TODO 12
+
+    //TODO 13
+    List<Student> timSVTheoKeyword(String keyword);
 }

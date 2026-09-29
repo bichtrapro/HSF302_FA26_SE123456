@@ -120,5 +120,14 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findGoodStudentsInDepartment(deptCode,minGpa);
     }
 
+    //TODO 13
+    @Override
+    public List<Student> timSVTheoKeyword(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            return List.of();
+        }
+        return studentRepository.timSVTheoKeyword(keyword);
+    }
+
 
 }
