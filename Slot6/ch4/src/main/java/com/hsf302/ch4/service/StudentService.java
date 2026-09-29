@@ -46,4 +46,7 @@ public interface StudentService {
 
     //TODO 13
     List<Student> timSVTheoKeyword(String keyword);
+
+    //TODO 15
+    List<Student> findAboveAverageGpa();
 }

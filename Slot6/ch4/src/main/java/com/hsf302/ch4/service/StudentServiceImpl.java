@@ -128,6 +128,11 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentRepository.timSVTheoKeyword(keyword);
     }
+    //TODO 15
+    @Override
+    public List<Student> findAboveAverageGpa() {
+        return studentRepository.findAboveAverageGpa();
+    }
 
 
 }
