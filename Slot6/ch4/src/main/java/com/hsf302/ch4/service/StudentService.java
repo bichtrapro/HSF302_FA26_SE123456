@@ -1,10 +1,12 @@
 package com.hsf302.ch4.service;
 
+import com.hsf302.ch4.pojo.Gender;
 import com.hsf302.ch4.pojo.Student;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,4 +29,9 @@ public interface StudentService {
     List<Student> timSVTheoTen(String keyword);
     List<Student> timSVTheoEmailDomain(String domain);
     List<Student> timSVKhongCoEmail();
+
+    //TODO 10
+    List<Student> timGPABetween(double min, double max);
+    List<Student> timGenderActive(Gender gender);
+    List<Student> timDobAfter(LocalDate date);
 }

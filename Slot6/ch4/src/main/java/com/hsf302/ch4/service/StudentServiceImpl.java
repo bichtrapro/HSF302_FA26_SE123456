@@ -1,5 +1,6 @@
 package com.hsf302.ch4.service;
 
+import com.hsf302.ch4.pojo.Gender;
 import com.hsf302.ch4.pojo.Student;
 import com.hsf302.ch4.repository.StudentRepository;
 import org.springframework.data.domain.Page;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,6 +74,21 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> timSVKhongCoEmail() {
         return studentRepository.findStudentByEmailIsNull();
+    }
+
+    @Override
+    public List<Student> timGPABetween(double min, double max) {
+        return studentRepository.findStudentByGpaBetweenOrderByGpaDesc(min,max);
+    }
+
+    @Override
+    public List<Student> timGenderActive(Gender gender) {
+        return studentRepository.findByGenderAndActiveTrue(gender);
+    }
+
+    @Override
+    public List<Student> timDobAfter(LocalDate date) {
+        return studentRepository.findByDobAfter(date);
     }
 
 
