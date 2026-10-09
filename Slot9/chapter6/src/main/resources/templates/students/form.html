@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title th:text="${pageTitle}">Form sinh viên</title>
+</head>
+<body>
+<section>
+    <div class="mb-4">
+        <a th:href="@{/students}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left me-1"></i>Quay lại
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0" th:text="${pageTitle}">Form</h3>
+        </div>
+        <div class="card-body">
+            <form th:action="${isEdit} ? @{/students/{id}/edit(id=${student.id})} : @{/students/create}"
+                  th:object="${student}" method="post" class="form-form">
+
+                <!-- Họ tên -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">
+                        <i class="bi bi-person me-1"></i>Họ tên <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="name" th:field="*{name}"
+                           th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
+                         th:errors="*{name}">Lỗi</div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        <i class="bi bi-envelope me-1"></i>Email <span class="text-danger">*</span>
+                    </label>
+                    <input type="email" class="form-control" id="email" th:field="*{email}"
+                           th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}"
+                         th:errors="*{email}">Lỗi</div>
+                </div>
+
+                <!-- Tuổi -->
+                <div class="mb-3">
+                    <label for="age" class="form-label">
+                        <i class="bi bi-calendar me-1"></i>Tuổi <span class="text-danger">*</span>
+                    </label>
+                    <input type="number" class="form-control" id="age" th:field="*{age}"
+                           min="18" max="30" th:classappend="${#fields.hasErrors('age')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('age')}"
+                         th:errors="*{age}">Lỗi</div>
+                </div>
+
+                <!-- Chuyên ngành -->
+                <div class="mb-3">
+                    <label for="major" class="form-label">
+                        <i class="bi bi-book me-1"></i>Chuyên ngành <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="major" th:field="*{major}"
+                            th:classappend="${#fields.hasErrors('major')} ? 'is-invalid'">
+                        <option value="">Chọn chuyên ngành</option>
+                        <option th:each="major : ${majors}" th:value="${major}" th:text="${major}">CNTT</option>
+                    </select>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('major')}"
+                         th:errors="*{major}">Lỗi</div>
+                </div>
+
+                <!-- GPA -->
+                <div class="mb-3">
+                    <label for="gpa" class="form-label">
+                        <i class="bi bi-star me-1"></i>GPA <span class="text-danger">*</span>
+                    </label>
+                    <input type="number" class="form-control" id="gpa" th:field="*{gpa}"
+                           min="0.0" max="4.0" step="0.1"
+                           th:classappend="${#fields.hasErrors('gpa')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('gpa')}"
+                         th:errors="*{gpa}">Lỗi</div>
+                </div>
+
+                <!-- Button -->
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi" th:classappend="${isEdit} ? 'bi-check' : 'bi-plus-lg'" th:text="${isEdit} ? 'Cập nhật' : 'Thêm mới'"></i>
+                    </button>
+                    <a th:href="@{/students}" class="btn btn-outline-secondary">Hủy</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>
